@@ -2,6 +2,7 @@
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
 // File name: projects/1/Xor.hdl
+// (a or b) and not(a and b)
 /**
  * Exclusive-or gate:
  * if ((a and Not(b)) or (Not(a) and b)) out = 1, else out = 0
@@ -11,5 +12,8 @@ CHIP Xor {
     OUT out;
 
     PARTS:
-    //// Replace this comment with your code.
+    Or(a=a, b=b, out=AorB);
+    And(a=a, b=b, out=AandB);
+    Not(in=AandB, out=NotAandB);
+    And(a=AorB, b=NotAandB, out=out);
 }
